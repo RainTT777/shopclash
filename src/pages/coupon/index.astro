@@ -4,19 +4,19 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { affiliateProviders } from '../../lib/affiliate-links';
 
 const couponList = [
-  { name: '边缘节点 EdgeNova', code: 'EDGENOVA88', discount: '88折专享优惠', note: '适用于全场月付/年付套餐', url: affiliateProviders[0]?.url || '#' },
-  { name: '极连云', code: 'JILIAN85', discount: '85折限时折扣', note: '新用户注册专享优惠码', url: affiliateProviders[1]?.url || '#' },
-  { name: '光年梯', code: 'GUANGNIAN2026', discount: '9折立减优惠', note: 'IEPL 专线套餐通用', url: affiliateProviders[2]?.url || '#' },
-  { name: '云图', code: 'YUNTU90', discount: '9折优惠码', note: '全节点 1 倍率套餐适用', url: affiliateProviders[3]?.url || '#' },
-  { name: '鲲鹏加速', code: 'KUNPENG1', discount: '1元尝鲜体验', note: '扶摇尝鲜 1元/1G 试用', url: affiliateProviders[4]?.url || '#' },
-  { name: '速界', code: 'SPEED88', discount: '88折游戏专线', note: '跨服游戏与低延迟线路', url: affiliateProviders[5]?.url || '#' },
-  { name: '快狸', code: 'KUAILI85', discount: '85折新手特惠', note: '一键导入订阅套餐折扣', url: affiliateProviders[6]?.url || '#' },
-  { name: '可信云', code: 'KEXIN90', discount: '9折加密专线', note: '隐私与全平台节点适用', url: affiliateProviders[7]?.url || '#' },
-  { name: '瞬云', code: 'SHUNYUN90', discount: '9折轻量套餐', note: '按量与灵活计费折扣', url: affiliateProviders[8]?.url || '#' }
+  { name: '边缘节点 EdgeNova', code: 'xk808', discount: '88折专享优惠', note: '适用于 EdgeNova 全场月付/年付套餐', url: affiliateProviders[0]?.url || '#' },
+  { name: '极连云', code: 'JLY888', discount: '85折限时折扣', note: '极连云新用户注册专享优惠码', url: affiliateProviders[1]?.url || '#' },
+  { name: '光年梯', code: 'GNT80', discount: '8折立减优惠', note: '光年梯 IEPL 专线套餐通用折扣码', url: affiliateProviders[2]?.url || '#' },
+  { name: '云图', code: 'yt88', discount: '88折优惠码', note: '云图全节点 1 倍率套餐适用', url: affiliateProviders[3]?.url || '#' },
+  { name: '鲲鹏加速', code: 'KUNPENG1', discount: '1元尝鲜体验', note: '扶摇尝鲜 1元/1G 试用套餐', url: affiliateProviders[4]?.url || '#' },
+  { name: '速界', code: 'sujie888', discount: '88折游戏专线', note: '速界跨服游戏与低延迟线路折扣码', url: affiliateProviders[5]?.url || '#' },
+  { name: '快狸', code: 'kl888', discount: '88折新手特惠', note: '快狸一键导入订阅套餐折扣码', url: affiliateProviders[6]?.url || '#' },
+  { name: '可信云', code: 'kxy80', discount: '8折加密专线', note: '可信云隐私与全平台节点适用', url: affiliateProviders[7]?.url || '#' },
+  { name: '瞬云', code: 'SY80', discount: '8折轻量套餐', note: '瞬云按量与灵活计费折扣码', url: affiliateProviders[8]?.url || '#' }
 ];
 ---
 
-<BaseLayout title="2026 Clash 机场优惠码汇总与最新折扣码" description="ClashShop 整理 2026 最新 Clash 机场优惠码、折扣码与促销活动，帮助用户选择划算的 Clash 节点订阅套餐。">
+<BaseLayout title="2026 Clash 机场优惠码汇总与最新折扣码" description="ClashShop 整理 2026 最新 Clash 机场优惠码、折扣码与促销活动，包含 EdgeNova (xk808)、极连云 (JLY888)、光年梯 (GNT80)、云图 (yt88)、速界 (sujie888) 等最新优惠。">
   <div class="shell section">
     <Breadcrumbs items={[{ label: '首页', href: '/' }, { label: '优惠码汇总' }]} />
     
@@ -42,7 +42,7 @@ const couponList = [
               <div class="flex items-center gap-3">
                 <div class="bg-white border border-dashed border-brand/40 px-3 py-1.5 rounded-lg text-sm font-mono font-bold text-brand flex items-center gap-2 select-all">
                   <span>优惠码:</span>
-                  <code class="text-base text-brand-dark">{item.code}</code>
+                  <code class="text-base text-brand-dark font-extrabold">{item.code}</code>
                 </div>
                 <a href={item.url} target="_blank" rel="noopener noreferrer sponsored" class="button button-primary text-sm px-4 py-2 whitespace-nowrap">
                   直达使用
