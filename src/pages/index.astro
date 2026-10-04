@@ -9,18 +9,8 @@ const cards = affiliateProviders.map((provider) => ({
   ...provider,
   eyebrow: '机场推荐 · 合作入口',
   text: provider.description,
-  meta: `${provider.sourceStatus} · 核验于 2026-10-03`,
-  action: '访问服务商'
+  meta: `${provider.sourceStatus} · 核验于 2026-10-03`
 }));
-
-const couponList = [
-  { name: '边缘节点 EdgeNova', code: 'EDGENOVA88', discount: '88折专享', note: '适用于全场月付/年付套餐', url: affiliateProviders[0]?.url || '#' },
-  { name: '极连云', code: 'JILIAN85', discount: '85折限时', note: '新用户注册专享优惠码', url: affiliateProviders[1]?.url || '#' },
-  { name: '光年梯', code: 'GUANGNIAN2026', discount: '9折立减', note: 'IEPL 专线套餐通用', url: affiliateProviders[2]?.url || '#' },
-  { name: '云图', code: 'YUNTU90', discount: '9折优惠', note: '全节点 1 倍率套餐适用', url: affiliateProviders[3]?.url || '#' },
-  { name: '鲲鹏加速', code: 'KUNPENG1', discount: '1元尝鲜', note: '扶摇尝鲜 1元/1G 试用', url: affiliateProviders[4]?.url || '#' },
-  { name: '速界', code: 'SPEED88', discount: '88折游戏', note: '跨服游戏与低延迟线路', url: affiliateProviders[5]?.url || '#' }
-];
 ---
 <BaseLayout title="Clash 机场推荐：2026 便宜稳定与高性价比订阅" description="ClashShop 提供 Clash 机场推荐、2026便宜稳定机场推荐与性价比高机场订阅推荐，整理 IPLC/IEPL 专线、套餐价格、客户端支持和购买指南。" jsonLd={organizationLd}>
   <div class="catalog-app">
@@ -57,41 +47,41 @@ const couponList = [
           </article>
         </section>
 
-        <!-- 优惠码汇总板块 -->
-        <section class="catalog-content coupon-block-section" aria-labelledby="coupon-title">
-          <div class="catalog-heading">
-            <div><p>DISCOUNT CODES & COUPONS</p><h2 id="coupon-title">Clash 机场优惠码汇总 (2026限时专享)</h2></div>
-            <a href="/guides/clashshop-coupon-codes/" class="coupon-more-link">查看全部优惠码 ➔</a>
-          </div>
-          <div class="coupon-grid">
-            {couponList.map((item) => (
-              <div class="coupon-card">
-                <div class="coupon-info">
-                  <strong>{item.name}</strong>
-                  <span class="coupon-tag">{item.discount}</span>
-                </div>
-                <div class="coupon-code-wrap">
-                  <small>优惠码</small>
-                  <code>{item.code}</code>
-                </div>
-                <a href={item.url} target="_blank" rel="noopener noreferrer sponsored" class="coupon-act-btn">去使用</a>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <!-- 机场推荐列表 -->
+        <!-- Clash 机场推荐列表（参考图2 3列排版） -->
         <section class="catalog-content" aria-labelledby="latest-title">
-          <div class="catalog-heading"><div><p>CLASHSHOP RECOMMENDS</p><h2 id="latest-title">Clash 机场推荐列表</h2></div><p class="catalog-notice"><b>联盟披露：</b>以下按钮为商业合作链接，我们可能获得佣金；这不代表价格、性能或稳定性已经过独立验证。</p></div>
+          <div class="catalog-heading">
+            <div><p>CLASHSHOP RECOMMENDS</p><h2 id="latest-title">Clash 机场推荐列表</h2></div>
+            <p class="catalog-notice"><b>联盟披露：</b>以下按钮为商业合作链接，我们可能获得佣金；这不代表价格、性能或稳定性已经过独立验证。</p>
+          </div>
           <div class="catalog-grid" id="airport-list">
             {cards.map((card, index) => <article class:list={['catalog-card', { 'top-provider': index < 3 }]}>
               <div class="card-rank"><span>TOP</span><strong>{String(index + 1).padStart(2, '0')}</strong></div>
-              <div class="card-head"><span class:list={['product-mark', `tone-${card.tone}`]}>{card.mark}</span><div><small>{card.eyebrow}</small><h3><a href={card.url} target="_blank" rel="noopener noreferrer sponsored">{card.name}</a></h3></div></div>
+              <div class="card-head">
+                <span class:list={['product-mark', `tone-${card.tone}`]}>{card.mark}</span>
+                <div>
+                  <small>{card.eyebrow}</small>
+                  <h3>
+                    <!-- 外部链接跳转 -->
+                    <a href={card.url} target="_blank" rel="noopener noreferrer sponsored">{card.name}</a>
+                  </h3>
+                </div>
+              </div>
               <div class="provider-price"><strong>{card.price}</strong><span>{card.tagline}</span></div>
               <p>{card.text}</p>
-              <dl class="provider-specs"><div><dt>协议</dt><dd>{card.protocols}</dd></div><div><dt>线路</dt><dd>{card.line}</dd></div></dl>
+              <dl class="provider-specs">
+                <div><dt>协议</dt><dd>{card.protocols}</dd></div>
+                <div><dt>线路</dt><dd>{card.line}</dd></div>
+              </dl>
               <div class="card-meta">{card.meta}</div>
-              <footer><span title="已认证仅表示联盟跳转链接已配置，不代表服务质量认证">商业合作 · <b>已认证</b></span><a href={card.url} target="_blank" rel="noopener noreferrer sponsored" data-cta={`provider-${card.mark.toLowerCase()}`}>直达官网</a></footer>
+              <footer>
+                <div class="card-footer-links">
+                  <!-- 内链评测指南 -->
+                  <a href={card.internalUrl} class="internal-review-link">评测指南</a>
+                  <span title="已认证仅表示联盟跳转链接已配置，不代表服务质量认证">商业合作 · <b>已认证</b></span>
+                </div>
+                <!-- 外部链接直达官网 -->
+                <a href={card.url} target="_blank" rel="noopener noreferrer sponsored" class="external-cta-btn" data-cta={`provider-${card.mark.toLowerCase()}`}>直达官网</a>
+              </footer>
             </article>)}
           </div>
         </section>
@@ -106,20 +96,9 @@ const couponList = [
 </BaseLayout>
 
 <style>
-  .coupon-block-section{padding-top:14px!important;padding-bottom:14px!important;margin-top:14px}
-  .coupon-more-link{color:#087fa5;font-size:.82rem;font-weight:700;text-decoration:none}
-  .coupon-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
-  .coupon-card{display:flex;align-items:center;justify-content:space-between;border:1px solid #c9d7e0;border-radius:10px;padding:12px 14px;background:#f8fbfd}
-  .coupon-info strong{display:block;color:#182838;font-size:.88rem}
-  .coupon-tag{display:inline-block;margin-top:2px;border-radius:4px;padding:1px 6px;color:#056d8f;background:#e1f4fc;font-size:.68rem;font-weight:800}
-  .coupon-code-wrap{text-align:center}
-  .coupon-code-wrap small{display:block;color:#7a8a99;font-size:.6rem}
-  .coupon-code-wrap code{display:block;color:#087fa5;font-family:monospace;font-size:.9rem;font-weight:900}
-  .coupon-act-btn{display:inline-flex;align-items:center;justify-content:center;border-radius:6px;padding:6px 12px;color:#fff;background:#087fa5;font-size:.76rem;font-weight:700;text-decoration:none}
-  .coupon-act-btn:hover{background:#056d8f}
-  @media(max-width:900px){.coupon-grid{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:600px){.coupon-grid{grid-template-columns:1fr}}
-
+  .card-footer-links{display:flex;align-items:center;gap:8px}
+  .internal-review-link{font-size:.65rem;color:#087fa5!important;background:transparent!important;min-width:auto!important;height:auto!important;box-shadow:none!important;text-decoration:underline!important}
+  .external-cta-btn{display:inline-flex;min-width:88px;height:29px;align-items:center;justify-content:center;border-radius:999px;color:#fff;background:#168de0;font-size:.65rem;font-weight:700;text-decoration:none;transition:background .16s ease}
+  .external-cta-btn:hover{background:#0875c3}
   .homepage-indexing{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:22px;border:1px solid #d8e3e8;border-radius:20px;padding:22px 24px;background:#f8fbfc}.homepage-indexing p{margin:0;color:#007fa8;font-size:.67rem;font-weight:900}.homepage-indexing h2{margin:3px 0;font-size:1.2rem}.homepage-indexing>div>span{color:#71818a;font-size:.78rem}.homepage-indexing nav{display:flex;gap:10px}.homepage-indexing a{display:flex;align-items:center;gap:10px;min-width:160px;border:1px solid #d5e5ea;border-radius:14px;padding:10px 13px;background:#fff;text-decoration:none}.homepage-indexing a>b{display:grid;width:34px;height:34px;place-items:center;border-radius:99px;color:#fff;background:#087fa5;font-size:.65rem}.homepage-indexing a span,.homepage-indexing a strong,.homepage-indexing a small{display:block}.homepage-indexing a small{color:#788993;font-size:.62rem}@media(max-width:760px){.homepage-indexing{align-items:flex-start;flex-direction:column}.homepage-indexing nav{width:100%;flex-direction:column}.homepage-indexing a{width:100%}}
 </style>
-
