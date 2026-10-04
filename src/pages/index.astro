@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { affiliateProviders } from '../lib/affiliate-links';
+import { site } from '../lib/site';
+
+const organizationLd = { '@context': 'https://schema.org', '@type': 'Organization', name: site.name, url: site.url, description: site.description };
+
+const cards = affiliateProviders.map((provider) => ({
+  ...provider,
+  eyebrow: '机场推荐 · 合作入口',
+  text: provider.description,
+  meta: `${provider.sourceStatus} · 核验于 2026-10-03`,
+  action: '访问服务商'
+}));
+---
+<BaseLayout title="Clash 机场推荐：2026 便宜稳定与高性价比订阅" description="ClashShop 提供 Clash 机场推荐、2026便宜稳定机场推荐与性价比高机场订阅推荐，整理 IPLC/IEPL 专线、套餐价格、客户端支持和购买指南。" jsonLd={organizationLd}>
+  <div class="catalog-app">
+    <header class="catalog-topbar">
+      <a class="catalog-brand" href="/" aria-label="ClashShop 首页">
+        <span class="cat-logo-image"><img src="/clash-cat-logo.png" width="154" height="129" alt="ClashShop 深蓝小猫标志" /></span>
+        <strong>ClashShop</strong><span class="sidebar-collapse" aria-hidden="true">‹</span>
+      </a>
+      <div class="dashboard-title">ClashShop 机场推荐</div>
+      <div class="catalog-tools" aria-label="快捷入口"><a href="/help/" title="帮助中心">?</a><a href="/rss.xml" title="通知">♧</a><a class="dashboard-profile" href="/about/" title="关于 ClashShop"><span class="profile-avatar">C</span><span><strong>ClashShop</strong><small>9 项推荐</small></span><i>⌄</i></a></div>
+    </header>
+
+    <div class="catalog-layout">
+      <aside class="catalog-sidebar">
+        <div class="side-section primary-nav"><nav><a class="side-active" href="/"><i>⌂</i><span>机场推荐更新</span></a><a href="/guides/clashshop-coupon-codes/"><i>券</i><span>优惠码汇总</span></a></nav></div>
+        <div class="side-section side-resources"><p>内容服务</p><nav><a href="/science/"><i>科</i><span>科学上网</span></a><a href="/help/"><i>助</i><span>帮助中心</span></a><a href="/tools/"><i>具</i><span>工具汇总</span></a><a href="/faq/"><i>问</i><span>问题库帮助</span></a><a href="/methodology/"><i>标</i><span>评测标准</span></a><a href="/about/"><i>关</i><span>关于我们</span></a></nav></div>
+      </aside>
+
+      <main class="catalog-main">
+        <section class="client-dashboard" aria-labelledby="airport-hero-title">
+          <article class="client-panel dashboard-summary hero-image-summary">
+            <div class="hero-summary-layout">
+              <div class="hero-summary-copy">
+                <div class="client-panel-head"><div><small>CLASH AIRPORT GUIDE</small><h1 id="airport-hero-title">Clash 机场推荐：2026 便宜稳定与高性价比订阅</h1></div><span class="system-online"><i></i>持续更新</span></div>
+                <p class="hero-seo-line">2026便宜稳定机场推荐 · 性价比高机场订阅推荐 2026</p>
+                <p class="hero-description">聚合 Clash 客户端适配、IPLC/IEPL 专线、套餐价格与使用场景，帮助你更快筛选适合自己的机场订阅方案。</p>
+                <div class="hero-keywords" aria-label="Clash 推荐主题"><span>Clash 客户端</span><span>稳定机场</span><span>高性价比订阅</span></div>
+              </div>
+              <figure class="hero-client-visual">
+                <img src="/clash-client-collection.png" width="1024" height="570" alt="Clash 客户端合集，包括多个 Clash 猫咪客户端图标" loading="eager" fetchpriority="high" />
+              </figure>
+            </div>
+            <div class="summary-footer"><strong>精选 9 个服务入口</strong><span>价格、套餐与线路状态会变化，请在官网核对实时条款后再做决定。</span><a href="#airport-list">查看推荐列表</a></div>
+          </article>
+        </section>
+        <section class="catalog-content" aria-labelledby="latest-title">
+          <div class="catalog-heading"><div><p>CLASHSHOP RECOMMENDS</p><h2 id="latest-title">Clash 机场推荐列表</h2></div><p class="catalog-notice"><b>联盟披露：</b>以下按钮为商业合作链接，我们可能获得佣金；这不代表价格、性能或稳定性已经过独立验证。</p></div>
+          <div class="catalog-grid" id="airport-list">
+            {cards.map((card, index) => <article class:list={['catalog-card', { 'top-provider': index < 3 }]}>
+              <div class="card-rank"><span>TOP</span><strong>{String(index + 1).padStart(2, '0')}</strong></div>
+              <div class="card-head"><span class:list={['product-mark', `tone-${card.tone}`]}>{card.mark}</span><div><small>{card.eyebrow}</small><h3><a href={card.url} target="_blank" rel="noopener noreferrer sponsored">{card.name}</a></h3></div></div>
+              <div class="provider-price"><strong>{card.price}</strong><span>{card.tagline}</span></div>
+              <p>{card.text}</p>
+              <dl class="provider-specs"><div><dt>协议</dt><dd>{card.protocols}</dd></div><div><dt>线路</dt><dd>{card.line}</dd></div></dl>
+              <div class="card-meta">{card.meta}</div>
+              <footer><span title="已认证仅表示联盟跳转链接已配置，不代表服务质量认证">商业合作 · <b>已认证</b></span><a href={card.url} target="_blank" rel="noopener noreferrer sponsored" data-cta={`provider-${card.mark.toLowerCase()}`}>直达官网</a></footer>
+            </article>)}
+          </div>
+        </section>
+        <section class="homepage-indexing" aria-labelledby="indexing-title">
+          <div><p>SEARCH ENGINE ACCESS</p><h2 id="indexing-title">网站地图与 Robots</h2><span>网站公开页面目录与搜索引擎抓取规则。</span></div>
+          <nav><a href="/sitemap.xml"><b>XML</b><span><strong>网站地图</strong><small>/sitemap.xml</small></span></a><a href="/robots.txt"><b>TXT</b><span><strong>Robots</strong><small>/robots.txt</small></span></a></nav>
+        </section>
+      </main>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>.homepage-indexing{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:22px;border:1px solid #d8e3e8;border-radius:20px;padding:22px 24px;background:#f8fbfc}.homepage-indexing p{margin:0;color:#007fa8;font-size:.67rem;font-weight:900}.homepage-indexing h2{margin:3px 0;font-size:1.2rem}.homepage-indexing>div>span{color:#71818a;font-size:.78rem}.homepage-indexing nav{display:flex;gap:10px}.homepage-indexing a{display:flex;align-items:center;gap:10px;min-width:160px;border:1px solid #d5e5ea;border-radius:14px;padding:10px 13px;background:#fff;text-decoration:none}.homepage-indexing a>b{display:grid;width:34px;height:34px;place-items:center;border-radius:9px;color:#fff;background:#087fa5;font-size:.65rem}.homepage-indexing a span,.homepage-indexing a strong,.homepage-indexing a small{display:block}.homepage-indexing a small{color:#788993;font-size:.62rem}@media(max-width:760px){.homepage-indexing{align-items:flex-start;flex-direction:column}.homepage-indexing nav{width:100%;flex-direction:column}.homepage-indexing a{width:100%}}</style>

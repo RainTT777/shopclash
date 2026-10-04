@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+const providers = await getCollection('providers');
+---
+<BaseLayout title="VPN 与服务推荐" description="按平台、协议、价格说明和退款政策比较 VPN 与网络隐私服务；所有未经核验的数据都会明确标记。">
+  <div class="shell section">
+    <Breadcrumbs items={[{ label: '首页', href: '/' }, { label: 'VPN 推荐' }]} />
+    <header class="max-w-3xl"><p class="eyebrow">服务目录</p><h1 class="my-3 text-4xl font-black sm:text-5xl">VPN 与隐私服务比较</h1><p class="text-lg text-muted">用一致字段快速检查平台、协议、价格表达和退款政策。当前条目均为页面演示数据，不能用于购买决策。</p></header>
+    <div class="notice my-8"><strong>演示数据：</strong>真实服务上线前必须完成来源核验。本页不会根据联盟佣金自动排序。</div>
+    <div class="table-wrap" role="region" aria-label="服务比较表" tabindex="0">
+      <table><thead><tr><th>服务</th><th>平台</th><th>协议</th><th>价格说明</th><th>退款政策</th><th>核验状态</th></tr></thead><tbody>{providers.map((p) => <tr><td><a class="font-bold text-brand-dark" href={`/vpn/${p.id}/`}>{p.data.name}</a></td><td>{p.data.platforms.join('、')}</td><td>{p.data.protocols.join('、')}</td><td>{p.data.priceSummary}</td><td>{p.data.refundPolicy}</td><td>{p.data.reviewStatus === 'reviewed' ? '已审校' : '待核验'}<br/><small>{p.data.lastVerifiedAt.toLocaleDateString('zh-CN')}</small></td></tr>)}</tbody></table>
+    </div>
+  </div>
+</BaseLayout>

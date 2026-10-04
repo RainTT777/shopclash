@@ -1,0 +1,5 @@
+---
+import { getCollection } from 'astro:content'; import BaseLayout from '../../layouts/BaseLayout.astro'; import Breadcrumbs from '../../components/Breadcrumbs.astro';
+const items=await getCollection('comparisons');
+---
+<BaseLayout title="VPN 与隐私服务对比" description="按一致的核验日期和比较标准查看 VPN 与隐私服务对比，区分事实、公开声明与编辑判断。"><div class="shell section"><Breadcrumbs items={[{label:'首页',href:'/'},{label:'服务对比'}]}/><h1 class="text-4xl font-black sm:text-5xl">服务对比</h1><p class="max-w-2xl text-lg text-muted">对比内容使用相同维度与相近核验日期；资料不足时不评选胜者。</p><div class="mt-10 grid gap-5 md:grid-cols-2">{items.map((item)=><article class="card"><h2 class="mt-0 text-xl"><a class="no-underline hover:text-brand" href={`/compare/${item.id}/`}>{item.data.title}</a></h2><p class="text-muted">{item.data.summary}</p><p class="mb-0 text-sm font-bold text-accent">演示数据 · 不参与索引</p></article>)}</div></div></BaseLayout>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
+  <title id="title">全球网络节点科技插图</title><desc id="desc">设备通过发光线路连接多个网络节点的抽象插图</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07192f"/><stop offset="1" stop-color="#0b3a63"/></linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#16c7ff"/><stop offset="1" stop-color="#4367ff"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="760" height="520" rx="42" fill="url(#bg)"/>
+  <g opacity=".16" stroke="#7ddcff"><path d="M0 92h760M0 180h760M0 268h760M0 356h760M0 444h760"/><path d="M92 0v520M204 0v520M316 0v520M428 0v520M540 0v520M652 0v520"/></g>
+  <g fill="none" stroke="#23c8ff" stroke-width="3" stroke-dasharray="8 12" opacity=".8"><path d="M154 134Q300 40 454 132T680 98"/><path d="M108 350Q250 246 388 344T670 310"/><path d="M154 134Q230 255 108 350M454 132Q420 244 388 344M680 98Q590 204 670 310"/></g>
+  <g filter="url(#glow)"><circle cx="154" cy="134" r="9" fill="#75e7ff"/><circle cx="454" cy="132" r="11" fill="#5c8cff"/><circle cx="680" cy="98" r="8" fill="#75e7ff"/><circle cx="108" cy="350" r="8" fill="#5c8cff"/><circle cx="388" cy="344" r="10" fill="#75e7ff"/><circle cx="670" cy="310" r="9" fill="#5c8cff"/></g>
+  <g transform="translate(230 178)"><rect width="304" height="210" rx="20" fill="#071426" stroke="#69dfff" stroke-width="3"/><rect x="18" y="18" width="268" height="158" rx="12" fill="url(#screen)" opacity=".9"/><path d="M56 66h148M56 98h196M56 130h118" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity=".8"/><circle cx="245" cy="68" r="19" fill="#061b38" opacity=".85"/><path d="m237 68 6 6 12-14" fill="none" stroke="#75efff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M121 210h62l18 35H103z" fill="#102a48"/><rect x="80" y="244" width="144" height="12" rx="6" fill="#1a4d7d"/></g>
+  <g fill="#fff" font-family="Arial,sans-serif" font-weight="700"><text x="103" y="115" font-size="15">EDGE</text><text x="626" y="78" font-size="15">FAST</text><text x="620" y="346" font-size="15">LINK</text></g>
+</svg>

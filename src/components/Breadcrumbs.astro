@@ -1,0 +1,10 @@
+---
+interface Item { label: string; href?: string }
+interface Props { items: Item[] }
+const { items } = Astro.props;
+---
+<nav aria-label="面包屑" class="mb-7 text-sm text-muted">
+  <ol class="flex flex-wrap gap-2 p-0">
+    {items.map((item, index) => <li class="list-none"><span aria-hidden="true">{index ? '／ ' : ''}</span>{item.href ? <a href={item.href}>{item.label}</a> : <span aria-current="page">{item.label}</span>}</li>)}
+  </ol>
+</nav>

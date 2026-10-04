@@ -1,0 +1,17 @@
+---
+import { site } from '../lib/site';
+---
+<footer class="border-t border-line bg-ink py-10 text-sm text-white/80">
+  <div class="shell grid gap-8 md:grid-cols-[1.3fr_2fr]">
+    <div>
+      <p class="m-0 text-lg font-black text-white">{site.name}</p>
+      <p class="max-w-md">独立的中文网络隐私与工具评测网站。我们不提供软件下载，也不代表 Clash 项目或任何服务商。</p>
+    </div>
+    <nav aria-label="页脚导航" class="grid grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-3">
+      <a href="/about/">关于我们</a><a href="/methodology/">评测方法</a><a href="/affiliate-disclosure/">联盟披露</a>
+      <a href="/privacy/">隐私政策</a><a href="/disclaimer/">免责声明</a><a href="/contact/">联系方式</a>
+      <a href="/rss.xml">RSS</a><a href="/sitemap-index.xml">Sitemap</a>
+    </nav>
+  </div>
+  <div class="shell mt-8 border-t border-white/15 pt-6">© {new Date().getFullYear()} {site.name}。内容仅供一般信息参考。</div>
+</footer>

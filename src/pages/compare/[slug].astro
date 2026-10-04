@@ -1,0 +1,7 @@
+---
+import { getCollection, getEntry, render, type CollectionEntry } from 'astro:content'; import EditorialLayout from '../../layouts/EditorialLayout.astro';
+export async function getStaticPaths(){return (await getCollection('comparisons')).map((entry)=>({params:{slug:entry.id},props:{entry}}));}
+interface Props { entry: CollectionEntry<'comparisons'> }
+const {entry}=Astro.props; const {Content}=await render(entry); const compared=await Promise.all(entry.data.providers.map((ref)=>getEntry(ref)));
+---
+<EditorialLayout entry={entry} section="服务对比" sectionHref="/compare/"><div class="notice"><strong>结论：</strong>{entry.data.verdict}</div><div class="table-wrap my-8"><table><thead><tr><th>维度</th>{compared.map((p)=><th>{p?.data.name}</th>)}</tr></thead><tbody><tr><td>平台</td>{compared.map((p)=><td>{p?.data.platforms.join('、')}</td>)}</tr><tr><td>协议</td>{compared.map((p)=><td>{p?.data.protocols.join('、')}</td>)}</tr><tr><td>价格</td>{compared.map((p)=><td>{p?.data.priceSummary}</td>)}</tr><tr><td>退款</td>{compared.map((p)=><td>{p?.data.refundPolicy}</td>)}</tr></tbody></table></div><Content /></EditorialLayout>

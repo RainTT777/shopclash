@@ -1,0 +1,7 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+interface Props { title: string; description: string }
+const { title, description } = Astro.props;
+---
+<BaseLayout title={title} description={description}><article class="shell section info-page"><Breadcrumbs items={[{label:'首页',href:'/'},{label:title}]}/><header class="max-w-3xl"><h1 class="text-4xl font-black sm:text-5xl">{title}</h1><p class="text-lg text-muted">{description}</p></header><div class="prose mt-10"><slot /></div></article></BaseLayout>

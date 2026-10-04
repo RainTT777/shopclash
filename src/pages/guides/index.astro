@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+---
+<BaseLayout title="文章库" description="当前文章库暂无内容。"><div class="shell section"><Breadcrumbs items={[{label:'首页',href:'/'},{label:'文章库'}]}/><main class="empty-library"><p class="eyebrow">CLASHSHOP KNOWLEDGE BASE</p><h1 class="my-3 text-4xl font-black sm:text-5xl">文章库</h1><p class="text-lg text-muted">当前文章库暂无内容。</p></main></div></BaseLayout>
+
+<style>
+  .empty-library{min-height:42vh;display:grid;place-content:center;justify-items:start}
+</style>

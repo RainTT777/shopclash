@@ -1,0 +1,10 @@
+---
+import { getAffiliateUrl } from '../lib/affiliate';
+interface Props { affiliateKey?: string | undefined; fallback: string; label?: string; class?: string }
+const { affiliateKey, fallback, label = '访问服务官网', class: className = 'button' } = Astro.props;
+const href = getAffiliateUrl(affiliateKey, fallback);
+---
+<div class="flex flex-col items-start gap-2">
+  <a href={href} class={className} rel="noopener noreferrer sponsored" target="_blank" data-cta="affiliate">{label}<span aria-hidden="true">↗</span></a>
+  <span class="text-xs text-muted">联盟链接：我们可能获得佣金，不影响你的价格或编辑结论。</span>
+</div>

@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const entries = [
+  { title: '机场订阅怎么选', text: '从使用设备、线路类型、计费周期和退款条件开始筛选。', href: '/faq/' },
+  { title: '优惠码如何核验', text: '确认适用套餐、有效期、自动续费和叠加规则。', href: '/faq/' },
+  { title: '客户端与工具入口', text: '查看桌面端、移动端、开源内核与官方文档。', href: '/tools/' },
+  { title: '评测结论怎么看', text: '了解来源优先级、价格核验、性能与隐私评估标准。', href: '/methodology/' },
+  { title: '翻墙出海后怎么开始', text: '从客户端安装、订阅导入、模式选择到 DNS 与连接排查，按步骤完成首次配置。', href: '#after-fanqiang' }
+];
+---
+<BaseLayout title="帮助中心" description="ClashShop 帮助中心：快速找到机场订阅选择、优惠码核验、客户端工具、评测标准和常见问题入口。">
+  <div class="shell section help-page"><Breadcrumbs items={[{label:'首页',href:'/'},{label:'帮助中心'}]} /><header><p class="eyebrow">HELP CENTER</p><h1>帮助中心</h1><p>从购买前核验到翻墙出海后的客户端配置，把常见入口集中到一页。</p></header><div class="help-grid">{entries.map((entry)=><a class="help-card" href={entry.href}><span>查看指南</span><h2>{entry.title}</h2><p>{entry.text}</p><b>进入 →</b></a>)}</div><section class="after-fanqiang" id="after-fanqiang"><p class="eyebrow">AFTER CONNECTING</p><h2>翻墙出海后，建议按这 6 步完成配置</h2><div class="after-steps"><article><b>01</b><h3>安装可信客户端</h3><p>从工具汇总页进入项目官网、GitHub 发布页或应用商店，避免下载来路不明的安装包。</p></article><article><b>02</b><h3>导入订阅链接</h3><p>复制服务商提供的订阅地址，在客户端中添加订阅并完成更新；不要把订阅链接公开分享。</p></article><article><b>03</b><h3>选择合适模式</h3><p>日常使用可先使用规则模式；遇到站点无法访问时，再检查规则、代理组和全局模式。</p></article><article><b>04</b><h3>测试 DNS 与连接</h3><p>检查系统代理是否生效，分别打开常用网站和需要登录的服务，观察延迟、解析与丢包。</p></article><article><b>05</b><h3>保护账号安全</h3><p>开启客户端更新与系统防护，不在陌生设备保存账号密码，也不要把机场面板截图发到公开群组。</p></article><article><b>06</b><h3>遇到问题先排查</h3><p>依次检查订阅是否过期、节点是否可用、客户端内核是否兼容、时间设置和本地网络限制。</p></article></div></section><div class="help-footer"><div><p class="eyebrow">QUESTION LIBRARY</p><h2>没有找到答案？</h2><p>问题库整理了购买、线路、订阅更新、客户端兼容与安全核验等高频问题。</p></div><a class="button" href="/faq/">打开问题库</a></div></div>
+</BaseLayout>
+<style>
+  .help-page{max-width:1120px}.help-page>header{max-width:760px;margin:28px 0 34px}.help-page h1{margin:8px 0;font-size:clamp(2.4rem,6vw,4.5rem)}.help-page>header>p:last-child{color:#64748b;font-size:1.1rem}.help-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.help-card{border:1px solid #dce7ee;border-radius:18px;padding:28px;color:#0f172a;background:#fff;text-decoration:none;box-shadow:0 12px 34px rgba(34,70,94,.06);transition:.2s ease}.help-card:hover{transform:translateY(-3px);border-color:#38bdf8}.help-card span{color:#0284c7;font-size:.72rem;font-weight:900}.help-card h2{margin:9px 0}.help-card p{color:#64748b}.help-card b{color:#0284c7}.help-footer{display:flex;align-items:center;justify-content:space-between;gap:30px;margin-top:24px;border-radius:20px;padding:30px;color:#e0f2fe;background:#0b213b}.help-footer h2{margin:4px 0;color:#fff}.help-footer p{margin:0;color:#b9d5e7}.help-footer .button{white-space:nowrap}@media(max-width:720px){.help-grid{grid-template-columns:1fr}.help-footer{align-items:flex-start;flex-direction:column}}
+</style>

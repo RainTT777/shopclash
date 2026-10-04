@@ -1,0 +1,28 @@
+---
+import { getCollection, getEntry, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import AffiliateLink from '../../components/AffiliateLink.astro';
+import { site } from '../../lib/site';
+export async function getStaticPaths() { return (await getCollection('providers')).map((entry) => ({ params: { slug: entry.id }, props: { entry } })); }
+interface Props { entry: CollectionEntry<'providers'> }
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const author = await getEntry(entry.data.author);
+const title = `${entry.data.name} 评测`;
+const jsonLd = [{ '@context': 'https://schema.org', '@type': 'Article', headline: title, description: entry.data.seo.description, datePublished: entry.data.publishedAt.toISOString(), dateModified: (entry.data.updatedAt || entry.data.publishedAt).toISOString(), author: { '@type': 'Person', name: author?.data.name }, publisher: { '@type': 'Organization', name: site.name, url: site.url }, inLanguage: 'zh-CN' }, { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: '首页', item: site.url }, { '@type': 'ListItem', position: 2, name: 'VPN 推荐', item: `${site.url}/vpn/` }, { '@type': 'ListItem', position: 3, name: entry.data.name }] }];
+---
+<BaseLayout title={entry.data.seo.title || title} description={entry.data.seo.description} noindex={entry.data.seo.noindex} type="article" jsonLd={jsonLd}>
+  <article class="shell section">
+    <Breadcrumbs items={[{ label: '首页', href: '/' }, { label: 'VPN 推荐', href: '/vpn/' }, { label: entry.data.name }]} />
+    <header class="grid gap-8 lg:grid-cols-[1fr_330px]">
+      <div><p class="eyebrow">完整评测 · {entry.data.reviewStatus === 'reviewed' ? '已审校' : '待进一步核验'}</p><h1 class="my-3 text-4xl font-black sm:text-5xl">{title}</h1><p class="text-lg text-muted">{entry.data.summary}</p><p class="text-sm text-muted">作者：{author?.data.name} · 最后核验：{entry.data.lastVerifiedAt.toLocaleDateString('zh-CN')}</p></div>
+      <aside class="card"><p class="mt-0 text-sm font-bold">价格摘要</p><p>{entry.data.priceSummary}</p><AffiliateLink affiliateKey={entry.data.affiliateKey} fallback={entry.data.officialUrl} label="查看官方信息" /></aside>
+    </header>
+    {entry.data.dataNotice && <div class="notice my-8"><strong>重要提示：</strong>{entry.data.dataNotice}</div>}
+    <section class="my-10 grid gap-5 md:grid-cols-2"><div class="card border-t-4 border-t-brand"><h2 class="mt-0 text-xl">优点</h2><ul>{entry.data.pros.map((item) => <li>{item}</li>)}</ul></div><div class="card border-t-4 border-t-accent"><h2 class="mt-0 text-xl">缺点</h2><ul>{entry.data.cons.map((item) => <li>{item}</li>)}</ul></div></section>
+    <section class="my-10 grid gap-5 md:grid-cols-2"><div><h2 class="text-xl">适合人群</h2><ul>{entry.data.recommendedFor.map((item) => <li>{item}</li>)}</ul></div><div><h2 class="text-xl">不适合人群</h2><ul>{entry.data.notFor.map((item) => <li>{item}</li>)}</ul></div></section>
+    <div class="prose"><Content /></div>
+    <aside class="prose mt-12 border-t border-line pt-6"><h2 class="text-xl">证据来源</h2>{entry.data.sources.length ? <ol>{entry.data.sources.map((source) => <li><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a>，{source.publisher}</li>)}</ol> : <p>当前没有可核验的产品来源，因此页面不提供真实购买结论。</p>}</aside>
+  </article>
+</BaseLayout>

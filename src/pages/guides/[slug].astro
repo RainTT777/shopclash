@@ -1,0 +1,9 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import EditorialLayout from '../../layouts/EditorialLayout.astro';
+export async function getStaticPaths() { return (await getCollection('posts')).map((entry) => ({ params: { slug: entry.id }, props: { entry } })); }
+interface Props { entry: CollectionEntry<'posts'> }
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+<EditorialLayout entry={entry} section="机场指南" sectionHref="/guides/"><Content /></EditorialLayout>

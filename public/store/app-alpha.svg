@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-labelledby="t d">
+  <title id="t">Alpha 配置卡带陈列图</title><desc id="d">冷白展台上的蓝色透明配置卡带概念图</desc>
+  <rect width="640" height="420" rx="44" fill="#eef8fc"/><circle cx="530" cy="82" r="62" fill="#d7f7ff"/><circle cx="90" cy="340" r="36" fill="#c6f5ea"/>
+  <path d="M84 105h472M84 155h472M84 205h472M84 255h472M84 305h472" stroke="#d2e5ec"/><path d="M140 55v310M220 55v310M300 55v310M380 55v310M460 55v310" stroke="#d2e5ec"/>
+  <rect x="164" y="72" width="312" height="276" rx="38" fill="#fff" stroke="#b9d5df" stroke-width="3"/><rect x="190" y="98" width="260" height="60" rx="22" fill="#12243a"/><circle cx="222" cy="128" r="13" fill="#00d2ff"/><text x="250" y="137" fill="#fff" font-family="Arial" font-size="25" font-weight="700">ALPHA PROFILE</text>
+  <rect x="190" y="180" width="116" height="88" rx="22" fill="#e7fbff"/><rect x="326" y="180" width="124" height="88" rx="22" fill="#edf9f5"/><text x="211" y="215" fill="#477080" font-family="Arial" font-size="15">LATENCY</text><text x="211" y="245" fill="#10253a" font-family="Arial" font-size="22" font-weight="700">VERIFY</text><text x="346" y="215" fill="#477080" font-family="Arial" font-size="15">TRAFFIC</text><text x="346" y="245" fill="#10253a" font-family="Arial" font-size="22" font-weight="700">CHECK</text>
+  <rect x="190" y="288" width="260" height="34" rx="17" fill="#00a8d6"/><circle cx="424" cy="305" r="8" fill="#bffff1"/>
+</svg>

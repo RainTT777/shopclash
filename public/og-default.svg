@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">ClashShop</title>
+  <desc id="desc">网络隐私与服务评测</desc>
+  <rect width="1200" height="630" fill="#f7f8f5"/>
+  <rect x="72" y="72" width="1056" height="486" rx="8" fill="#ffffff" stroke="#dce1dd" stroke-width="2"/>
+  <rect x="120" y="144" width="112" height="112" rx="16" fill="#08785e"/>
+  <text x="176" y="224" fill="#ffffff" font-family="Arial, sans-serif" font-size="72" font-weight="700" text-anchor="middle">C</text>
+  <text x="120" y="355" fill="#18201d" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="76" font-weight="700">ClashShop</text>
+  <text x="124" y="430" fill="#59635f" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="36">网络隐私 · 服务评测 · 代理指南</text>
+  <line x1="120" y1="490" x2="1080" y2="490" stroke="#08785e" stroke-width="8"/>
+</svg>

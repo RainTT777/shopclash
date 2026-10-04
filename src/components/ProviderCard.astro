@@ -1,0 +1,18 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props { provider: CollectionEntry<'providers'> }
+const { provider } = Astro.props;
+---
+<article class="card flex h-full flex-col">
+  <div class="mb-3 flex items-start justify-between gap-4">
+    <h3 class="m-0 text-xl font-extrabold"><a href={`/vpn/${provider.id}/`} class="no-underline hover:text-brand">{provider.data.name}</a></h3>
+    {provider.data.dataNotice && <span class="shrink-0 rounded-sm bg-orange-50 px-2 py-1 text-xs font-bold text-accent">示例数据</span>}
+  </div>
+  <p class="mt-0 text-muted">{provider.data.summary}</p>
+  <dl class="grid grid-cols-[92px_1fr] gap-y-2 text-sm">
+    <dt class="font-bold">平台</dt><dd class="m-0">{provider.data.platforms.join('、')}</dd>
+    <dt class="font-bold">价格</dt><dd class="m-0">{provider.data.priceSummary}</dd>
+    <dt class="font-bold">退款政策</dt><dd class="m-0">{provider.data.refundPolicy}</dd>
+  </dl>
+  <a href={`/vpn/${provider.id}/`} class="mt-auto pt-5 font-bold text-brand-dark">查看完整评测 →</a>
+</article>

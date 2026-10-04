@@ -1,0 +1,22 @@
+---
+import { nav, site } from '../lib/site';
+const current = Astro.url.pathname;
+---
+<header class="site-header">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-white focus:p-3">跳到正文</a>
+  <div class="wide-shell header-row">
+    <a href="/" class="header-brand" aria-label={`${site.name} 首页`}>
+      <span class="brand-mark" aria-hidden="true"><img src="/clash-cat-logo.png" width="154" height="129" alt="" /></span>
+      <span>{site.name}</span>
+      <small>PRIVACY LAB</small>
+    </a>
+    <form class="header-search" action="/help/" method="get" role="search">
+      <label class="sr-only" for="site-search">搜索评测与指南</label>
+      <input id="site-search" name="q" type="search" placeholder="搜索评测、对比与指南" autocomplete="off" />
+      <button type="submit" aria-label="搜索">⌕</button>
+    </form>
+    <nav aria-label="主导航" class="header-nav">
+      {nav.map((item) => <a class:list={[{ active: current.startsWith(item.href) }]} href={item.href}>{item.label}</a>)}
+    </nav>
+  </div>
+</header>

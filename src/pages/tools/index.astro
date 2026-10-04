@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const toolGroups = [
+  {
+    title: '桌面客户端',
+    description: '适用于 Windows、macOS 与 Linux 的图形化客户端。',
+    tools: [
+      { name: 'Clash Verge Rev', platform: 'Windows / macOS / Linux', description: '基于 Mihomo 内核的跨平台桌面客户端，支持配置管理与系统代理。', url: 'https://github.com/clash-verge-rev/clash-verge-rev' },
+      { name: 'Mihomo Party', platform: 'Windows / macOS / Linux', description: '面向多平台的 Mihomo 图形客户端，提供订阅、配置与连接状态管理。', url: 'https://github.com/mihomo-party-org/mihomo-party' },
+      { name: 'FlClash', platform: 'Windows / macOS / Linux / Android', description: '基于 Flutter 的多平台客户端，可在桌面端和 Android 设备使用。', url: 'https://github.com/chen08209/FlClash' }
+    ]
+  },
+  {
+    title: '移动端客户端',
+    description: '适用于 Android 与 iOS 的移动端工具入口。',
+    tools: [
+      { name: 'Clash Meta for Android', platform: 'Android', description: '基于 Mihomo 的 Android 客户端项目，发布页提供版本与更新记录。', url: 'https://github.com/MetaCubeX/ClashMetaForAndroid' },
+      { name: 'sing-box', platform: 'Android / iOS / 桌面端', description: '跨平台网络代理工具，官方文档包含客户端、配置与版本说明。', url: 'https://sing-box.sagernet.org/' },
+      { name: 'Shadowrocket', platform: 'iOS / iPadOS', description: 'iOS 平台网络工具，购买与版本信息以 Apple App Store 页面为准。', url: 'https://apps.apple.com/us/app/shadowrocket/id932747118' }
+    ]
+  },
+  {
+    title: '内核与项目文档',
+    description: '适合需要核验版本、兼容性与配置能力的进阶用户。',
+    tools: [
+      { name: 'Mihomo', platform: '开源内核', description: 'Mihomo 核心项目与发行版本入口，查看变更记录和兼容信息。', url: 'https://github.com/MetaCubeX/mihomo' },
+      { name: 'MetaCubeX 文档', platform: '项目文档', description: 'Mihomo 相关配置、规则与功能说明的官方文档入口。', url: 'https://wiki.metacubex.one/' },
+      { name: 'sing-box 文档', platform: '项目文档', description: 'sing-box 安装、平台支持与配置结构的官方说明。', url: 'https://sing-box.sagernet.org/' }
+    ]
+  }
+];
+---
+<BaseLayout title="代理与网络工具汇总" description="ClashShop 整理桌面端、移动端、Mihomo 与 sing-box 等网络工具的官方项目和文档入口，方便核验平台支持与版本信息。">
+  <div class="shell section resource-page">
+    <Breadcrumbs items={[{label:'首页',href:'/'},{label:'工具汇总'}]} />
+    <header class="resource-hero">
+      <p class="eyebrow">TOOLS DIRECTORY</p>
+      <h1>工具汇总</h1>
+      <p>按平台整理常用客户端、开源内核和官方文档。本站仅提供信息索引，不托管安装包；下载前请核对项目发布者、系统要求与当地法律及服务条款。</p>
+    </header>
+    <div class="tool-groups">
+      {toolGroups.map((group) => (
+        <section class="tool-group" aria-labelledby={`group-${group.title}`}>
+          <div class="group-heading"><div><p class="eyebrow">OFFICIAL LINKS</p><h2 id={`group-${group.title}`}>{group.title}</h2></div><p>{group.description}</p></div>
+          <div class="tool-grid">
+            {group.tools.map((tool) => (
+              <article class="tool-card">
+                <div class="tool-card-top"><span>{tool.name.slice(0, 2).toUpperCase()}</span><small>{tool.platform}</small></div>
+                <h3>{tool.name}</h3>
+                <p>{tool.description}</p>
+                <a href={tool.url} target="_blank" rel="noopener noreferrer">访问官方入口 <span aria-hidden="true">↗</span></a>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .resource-page{max-width:1180px}.resource-hero{margin-top:24px;border:1px solid #dbe7ef;border-radius:22px;padding:38px;background:linear-gradient(135deg,#fff,#eef9ff);box-shadow:0 18px 45px rgba(15,50,80,.08)}
+  .resource-hero h1{margin:8px 0 12px;font-size:clamp(2.25rem,5vw,4rem);line-height:1}.resource-hero>p:last-child{max-width:780px;margin:0;color:#64748b;font-size:1.02rem;line-height:1.8}
+  .tool-groups{display:grid;gap:24px;margin-top:28px}.tool-group{border:1px solid #dce7ee;border-radius:20px;padding:26px;background:rgba(255,255,255,.9);box-shadow:0 12px 32px rgba(26,69,99,.06)}
+  .group-heading{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:20px}.group-heading h2{margin:4px 0 0;font-size:1.5rem}.group-heading>p{max-width:520px;margin:0;color:#64748b;text-align:right}
+  .tool-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.tool-card{display:flex;min-height:230px;flex-direction:column;border:1px solid #dce7ee;border-radius:16px;padding:20px;background:#fafdff;transition:.2s ease}
+  .tool-card:hover{transform:translateY(-3px);border-color:#38bdf8;box-shadow:0 14px 30px rgba(56,189,248,.14)}.tool-card-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.tool-card-top>span{display:grid;width:38px;height:38px;place-items:center;border-radius:10px;color:#dff8ff;background:#0b4565;font-size:.72rem;font-weight:900}.tool-card small{color:#64748b}.tool-card h3{margin:18px 0 7px;font-size:1.15rem}.tool-card p{margin:0;color:#64748b;line-height:1.65}.tool-card a{margin-top:auto;padding-top:18px;color:#0284c7;font-weight:800;text-decoration:none}
+  @media(max-width:850px){.tool-grid{grid-template-columns:1fr}.group-heading{align-items:flex-start;flex-direction:column}.group-heading>p{text-align:left}.resource-hero,.tool-group{padding:24px}}
+</style>

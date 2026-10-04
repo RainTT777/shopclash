@@ -1,0 +1,5 @@
+---
+import { getCollection } from 'astro:content'; import BaseLayout from '../../layouts/BaseLayout.astro'; import Breadcrumbs from '../../components/Breadcrumbs.astro';
+const posts=(await getCollection('posts')).filter((p)=>p.data.category==='proxy'||p.data.tags.includes('代理基础'));
+---
+<BaseLayout title="代理基础主题" description="代理服务器、协议差异、DNS 行为和安全边界的中文基础知识合集。"><div class="shell section"><Breadcrumbs items={[{label:'首页',href:'/'},{label:'主题'},{label:'代理基础'}]}/><h1 class="text-4xl font-black sm:text-5xl">代理基础</h1><p class="max-w-2xl text-lg text-muted">理解代理能做什么、不能做什么，以及配置前应检查的边界。</p><div class="mt-10 grid gap-5 md:grid-cols-2">{posts.map((p)=><article class="card"><h2 class="mt-0 text-xl"><a href={`/guides/${p.id}/`}>{p.data.title}</a></h2><p>{p.data.summary}</p></article>)}</div></div></BaseLayout>

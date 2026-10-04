@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-labelledby="t d">
+  <title id="t">Beta 配置卡带陈列图</title><desc id="d">冷白展台上的青绿色配置卡带概念图</desc>
+  <rect width="640" height="420" rx="44" fill="#f1fbf8"/><circle cx="112" cy="95" r="64" fill="#cef7eb"/><circle cx="548" cy="332" r="45" fill="#dff5ff"/>
+  <path d="M70 330h500" stroke="#cbe1db" stroke-width="3"/><rect x="148" y="67" width="344" height="282" rx="42" fill="#fff" stroke="#bddbd2" stroke-width="3"/>
+  <rect x="178" y="96" width="284" height="72" rx="25" fill="#0d5f58"/><path d="M209 116h30v30h-30zM220 127h30v30h-30z" fill="#78f1d2"/><text x="270" y="141" fill="#fff" font-family="Arial" font-size="26" font-weight="700">BETA SLOT</text>
+  <rect x="178" y="190" width="284" height="54" rx="18" fill="#e7f8f3"/><text x="204" y="224" fill="#245e58" font-family="Arial" font-size="18" font-weight="700">MIHOMO READY</text><circle cx="429" cy="217" r="10" fill="#00c99a"/>
+  <rect x="178" y="262" width="132" height="56" rx="18" fill="#edf5ff"/><rect x="330" y="262" width="132" height="56" rx="18" fill="#fff5eb"/><text x="201" y="296" fill="#38546e" font-family="Arial" font-size="15">DATA: VERIFY</text><text x="351" y="296" fill="#7c5532" font-family="Arial" font-size="15">PING: TEST</text>
+</svg>
